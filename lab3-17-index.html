@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>数字展销平台 </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            overflow: hidden; 
+        }
+        
+        .logo {
+            float: left;
+            margin-left: 20px;
+        }
+        
+        .logo h1 {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #e74c3c;
+        }
+        
+        nav {
+            float: right;
+            margin-right: 20px;
+        }
+        
+        nav ul {
+            list-style: none;
+        }
+        
+        nav ul li {
+            float: left;
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        nav ul li a:hover {
+            background-color: #34495e;
+            cursor: pointer;
+        }
+        
+        .main-content {
+            overflow: hidden; 
+            padding: 20px;
+        }
+        
+        .left-sidebar {
+            float: left;
+            width: 200px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            position: relative; 
+            top: 10px; 
+        }
+        
+        .left-sidebar h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .category-list {
+            list-style: none;
+        }
+        
+        .category-list li {
+            margin-bottom: 10px;
+        }
+        
+        .category-list a {
+            color: #555;
+            text-decoration: none;
+            display: block;
+            padding: 8px 5px;
+            border-radius: 3px;
+        }
+        
+        .category-list a:hover {
+            background-color: #e9ecef;
+            color: #e74c3c;
+            cursor: pointer;
+            padding-left: 10px;
+        }
+        
+        .content {
+            float: left;
+            width: 600px;
+            margin: 0 20px;
+        }
+        .hot-recommend {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+        }
+        
+        .book-list {
+            overflow: hidden; 
+        }
+        
+        .book-item {
+            float: left;
+            width: 180px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 5px;
+        }
+        
+        .book-item:hover {
+            cursor: pointer;
+        }
+        
+        .book-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        
+        .book-item h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .book-item .price {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .new-books {
+                    margin-bottom: 30px;
+        }
+        
+        .book-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .book-table th, .book-table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        .book-table th {
+            background-color: #f8f9fa;
+            color: #2c3e50;
+        }
+        
+        .book-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .book-table tr:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+        
+        .right-sidebar {
+            float: right;
+            width: 300px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .promotion {
+            margin-bottom: 20px;
+        }
+        
+        .promotion-item {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px;
+        }
+        
+        .promotion-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px 
+            cursor: pointer;
+        }
+        
+        .promotion-item h4 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+        
+        .promotion-item p {
+            font-size: 14px;
+            color: #3b2c2c;
+        }
+
+        
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>数字<span>展销</span>平台</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">图书分类</a></li>
+                    <li><a href="#">热门推荐</a></li>
+                    <li><a href="#">新书上市</a></li>
+                    <li><a href="#">促销活动</a></li>
+                    <li><a href="#">关于我们</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="main-content">
+            <div class="left-sidebar">
+                <h3>图书分类</h3>
+                <ul class="category-list">
+                    <li><a href="#">文学小说</a></li>
+                    <li><a href="#">经济管理</a></li>
+                    <li><a href="#">计算机与互联网</a></li>
+                    <li><a href="#">社会科学</a></li>
+                    <li><a href="#">历史传记</a></li>
+                    <li><a href="#">艺术设计</a></li>
+                    <li><a href="#">生活休闲</a></li>
+                    <li><a href="#">少儿读物</a></li>
+                    <li><a href="#">教育考试</a></li>
+                    <li><a href="#">外语学习</a></li>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="hot-recommend">
+                    <h3 class="section-title">热门推荐</h3>
+                    <div class="book-list">
+                        <div class="book-item">
+                            <img src="AA9CE467952B52B9D22456FF99716B53.jpg" alt="书籍封面">
+                            <h4>许三观卖血记</h4>
+                            <p class="price">¥59.80</p>
+                        </div>
+                        <div class="book-item">
+                            <img src="8BDD9863FDCA0B45AA46DC78CFF2067B.jpg" alt="书籍封面">
+                            <h4>诡舍</h4>
+                            <p class="price">¥89.00</p>
+                        </div>
+                        <div class="book-item">
+                            <img src="68085B9D11A7755097186B82A2D44C03.jpg" alt="书籍封面">
+                            <h4>活着</h4>
+                            <p class="price">¥69.90</p>
+                        </div>
+                        <div class="book-item">
+                            <img src="D19405EACDB4555821B79A3388CE9543.jpg" alt="书籍封面">
+                            <h4>十日终焉</h4>
+                            <p class="price">¥49.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="new-books">
+                    <h3 class="section-title">新书上市</h3>
+                    <table class="book-table">
+                        <thead>
+                            <tr>
+                                <th>书名</th>
+                                <th>作者</th>
+                                <th>出版社</th>
+                                <th>价格</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Vue.js实战指南</td>
+                                <td>张明</td>
+                                <td>人民邮电出版社</td>
+                                <td>¥79.00</td>
+                            </tr>
+                            <tr>
+                                <td>React全栈开发</td>
+                                <td>李华</td>
+                                <td>电子工业出版社</td>
+                                <td>¥85.00</td>
+                            </tr>
+                            <tr>
+                                <td>Node.js企业级应用</td>
+                                <td>王强</td>
+                                <td>清华大学出版社</td>
+                                <td>¥92.00</td>
+                            </tr>
+                            <tr>
+                                <td>Python数据分析实战</td>
+                                <td>赵琳</td>
+                                <td>机械工业出版社</td>
+                                <td>¥68.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="right-sidebar">
+                <div class="promotion">
+                    <h3 class="section-title">促销信息</h3>
+                    <div class="promotion-item">
+                        <h4>全场满减活动</h4>
+                        <p>满100元减20元，满200元减元减50元，多买多减！</p>
+                    </div>
+                    <div class="promotion-item">
+                        <h4>新用户专享</h4>
+                        <p>新用户注册即送50元优惠券，首单立减！</p>
+                    </div>
+                    <div class="promotion-item">
+                        <h4>会员专享折扣</h4>
+                        <p>VIP会员享受全场9折优惠，还有专属礼品！</p>
+                    </div>
+                    <div class="promotion-item">
+                        <h4>限时特价</h4>
+                        <p>精选图书限时特价，低至5折，抢完即止！</p>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>
