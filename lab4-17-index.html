@@ -2,555 +2,10 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数字展销平台</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
-        }
-
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-            padding-top: 80px; /* 给固定导航栏留空间 */
-        }
-
-        .container {
-            width: 1200px;
-            margin: 0 auto;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 固定导航栏 */
-        .fixed-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px 0;
-            z-index: 999; /* 导航栏层级 */
-        }
-
-        .logo {
-            float: left;
-            margin-left: 20px;
-        }
-
-        .logo h1 {
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .logo span {
-            color: #e74c3c;
-        }
-
-        nav {
-            float: right;
-            margin-right: 20px;
-        }
-
-        .nav-list {
-            list-style: none;
-        }
-
-        .nav-list li {
-            float: left;
-            margin-left: 25px;
-            position: relative; /* 下拉菜单父容器 */
-        }
-
-        .nav-list li a {
-            color: white;
-            text-decoration: none;
-            font-size: 16px;
-            padding: 5px 10px;
-            border-radius: 3px;
-        }
-
-        .nav-list li a:hover {
-            background-color: #34495e;
-            cursor: pointer;
-        }
-
-        /* 下拉菜单 */
-        .dropdown-menu {
-            position: absolute;
-            top: 30px;
-            left: 0;
-            width: 150px;
-            background-color: #34495e;
-            display: none; /* 初始隐藏 */
-            border-radius: 0 0 5px 5px;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block; /* 悬停显示 */
-        }
-
-        .dropdown-menu li {
-            float: none;
-            margin: 0;
-            border-bottom: 1px solid #456;
-        }
-
-        .dropdown-menu li:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-menu a {
-            display: block;
-            padding: 8px 10px;
-        }
-
-        /* 顶部购物车图标 */
-        .cart-container {
-            position: relative;
-            margin-left: 15px;
-        }
-
-        .cart-icon {
-            display: inline-block;
-            position: relative;
-            width: 30px;
-            height: 30px;
-            margin-top: 5px;
-        }
-
-        .cart-icon-body {
-            position: absolute;
-            bottom: 0;
-            width: 30px;
-            height: 20px;
-            background-color: white;
-            border-radius: 3px 3px 0 0;
-        }
-
-        .cart-icon-body::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 30px;
-            height: 5px;
-            background-color: white;
-            border-radius: 0 0 3px 3px;
-        }
-
-        .cart-icon-handle {
-            position: absolute;
-            top: 5px;
-            right: -5px;
-            width: 10px;
-            height: 10px;
-            border: 3px solid white;
-            border-radius: 50%;
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -10px;
-            background-color: #e74c3c;
-            color: white;
-            font-size: 12px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .cart-count.show {
-            opacity: 1;
-        }
-
-        /* 主内容区 */
-        .main-content {
-            overflow: hidden;
-            padding: 20px;
-        }
-
-        .left-sidebar {
-            float: left;
-            width: 200px;
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-            position: relative;
-            top: 10px;
-        }
-
-        .left-sidebar h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .category-list {
-            list-style: none;
-        }
-
-        .category-list li {
-            margin-bottom: 10px;
-        }
-
-        .category-list a {
-            color: #555;
-            text-decoration: none;
-            display: block;
-            padding: 8px 5px;
-            border-radius: 3px;
-        }
-
-        .category-list a:hover {
-            background-color: #e9ecef;
-            color: #e74c3c;
-            cursor: pointer;
-            padding-left: 10px;
-        }
-
-        .content {
-            float: left;
-            width: 580px; 
-            margin: 0 20px;
-        }
-
-        .hot-recommend {
-            margin-bottom: 30px;
-        }
-
-        .section-title {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e74c3c;
-        }
-
-        .book-list {
-            overflow: hidden;
-        }
-
-        .book-item {
-            float: left;
-            width: 180px;
-            margin-right: 20px;
-            margin-bottom: 20px;
-            background-color: #fff;
-            border: 1px solid #eee;
-            border-radius: 5px;
-            padding: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .book-item:hover {
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .book-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 3px;
-            margin-bottom: 10px;
-            transition: transform 0.3s;
-        }
-
-        .book-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .book-info {
-            z-index: 2;
-            position: relative;
-        }
-
-        .book-item h4 {
-            font-size: 14px;
-            margin-bottom: 5px;
-            height: 40px;
-            overflow: hidden;
-        }
-
-        .book-item .price {
-            color: #e74c3c;
-            font-weight: bold;
-        }
-
-        /* 加入购物车按钮 */
-        .add-to-cart {
-            width: 100%;
-            margin-top: 10px;
-            padding: 6px 0;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            transition: all 0.3s;
-        }
-
-        .add-to-cart:hover {
-            background-color: #2980b9;
-            transform: scale(1.02);
-        }
-
-        .cart-btn-icon {
-            display: inline-block;
-            width: 16px;
-            height: 16px;
-            background-color: white;
-            color: #3498db;
-            border-radius: 2px;
-            line-height: 16px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 12px;
-        }
-
-        /* 图书详情遮罩 */
-        .book-detail {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-
-        .book-item:hover .book-detail {
-            transform: translateY(0);
-        }
-
-        .new-books {
-            margin-bottom: 30px;
-        }
-
-        .book-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .book-table th,
-        .book-table td {
-            border: 1px solid #ddd;
-            padding: 12px 15px;
-            text-align: left;
-        }
-
-        .book-table th {
-            background-color: #f8f9fa;
-            color: #2c3e50;
-        }
-
-        .book-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .book-table tr:hover {
-            background-color: #f1f1f1;
-            cursor: pointer;
-        }
-
-        /* 右侧栏 */
-        .right-sidebar {
-            float: right;
-            width: 320px;
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        /* 右侧购物车模块 */
-        .cart-module {
-            background-color: #fff;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .cart-empty {
-            text-align: center;
-            padding: 20px 0;
-            color: #999;
-        }
-
-        .cart-icon-large {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 15px;
-            position: relative;
-        }
-
-        .cart-icon-large .cart-icon-body {
-            width: 60px;
-            height: 40px;
-            background-color: #f1f1f1;
-        }
-
-        .cart-icon-large .cart-icon-body::after {
-            width: 60px;
-            height: 10px;
-            bottom: -10px;
-        }
-
-        .cart-icon-large .cart-icon-handle {
-            width: 20px;
-            height: 20px;
-            top: 10px;
-            right: -10px;
-            border-width: 5px;
-            border-color: #f1f1f1;
-        }
-
-        .cart-list {
-            max-height: 200px;
-            overflow-y: auto;
-            margin-bottom: 15px;
-            display: none;
-        }
-
-        .cart-list.show {
-            display: block;
-        }
-
-        .cart-list li {
-            padding: 10px 0;
-            border-bottom: 1px dashed #eee;
-            font-size: 14px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            list-style: none;
-        }
-
-        .cart-list li:last-child {
-            border-bottom: none;
-        }
-
-        .remove-item {
-            color: #e74c3c;
-            cursor: pointer;
-            font-size: 12px;
-            opacity: 0.8;
-        }
-
-        .remove-item:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
-
-        .cart-summary {
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        .total-price {
-            color: #e74c3c;
-            font-weight: bold;
-            font-size: 16px;
-        }
-
-        .checkout-btn {
-            width: 100%;
-            margin-top: 10px;
-            padding: 8px 0;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-
-        .checkout-btn:hover {
-            background-color: #c0392b;
-        }
-
-        /* 促销信息 */
-        .promotion {
-            margin-bottom: 20px;
-        }
-
-        .promotion-item {
-            background-color: #fff;
-            border: 1px solid #eee;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-        }
-
-        .promotion-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-        }
-
-        .promotion-item h4 {
-            color: #e74c3c;
-            margin-bottom: 10px;
-        }
-
-        .promotion-item p {
-            font-size: 14px;
-            color: #3b2c2c;
-        }
-        /* 回到顶部按钮 */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: rgba(44, 62, 80, 0.8);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 9999; 
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            background-color: #2c3e50;
-            transform: translateY(-3px);
-        }
-    </style>
+    <!-- 链接外部样式文件 -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -586,18 +41,23 @@
 
         <div class="main-content">
             <div class="left-sidebar">
-                <h3>图书分类</h3>
+                <h3>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+                    </svg>
+                    图书分类
+                </h3>
                 <ul class="category-list">
-                    <li><a href="#">文学小说</a></li>
-                    <li><a href="#">经济管理</a></li>
-                    <li><a href="#">计算机与互联网</a></li>
-                    <li><a href="#">社会科学</a></li>
-                    <li><a href="#">历史传记</a></li>
-                    <li><a href="#">艺术设计</a></li>
-                    <li><a href="#">生活休闲</a></li>
-                    <li><a href="#">少儿读物</a></li>
-                    <li><a href="#">教育考试</a></li>
-                    <li><a href="#">外语学习</a></li>
+                    <li><a href="#"><span class="category-icon">📚</span>文学小说</a></li>
+                    <li><a href="#"><span class="category-icon">💼</span>经济管理</a></li>
+                    <li><a href="#"><span class="category-icon">💻</span>计算机与互联网</a></li>
+                    <li><a href="#"><span class="category-icon">👥</span>社会科学</a></li>
+                    <li><a href="#"><span class="category-icon">📜</span>历史传记</a></li>
+                    <li><a href="#"><span class="category-icon">🎨</span>艺术设计</a></li>
+                    <li><a href="#"><span class="category-icon">🏠</span>生活休闲</a></li>
+                    <li><a href="#"><span class="category-icon">🧒</span>少儿读物</a></li>
+                    <li><a href="#"><span class="category-icon">🎓</span>教育考试</a></li>
+                    <li><a href="#"><span class="category-icon">🌐</span>外语学习</a></li>
                 </ul>
             </div>
 
@@ -665,6 +125,38 @@
                                 <p>简介：密闭空间悬疑推理，十天极限逃生游戏...</p>
                             </div>
                         </div>
+                        <div class="book-item">
+                            <img src="9dc4fcc3cb43ec13ca80cf1363364123.png" alt="兄弟">
+                            <div class="book-info">
+                                <h4>兄弟</h4>
+                                <p class="price">¥79.90</p>
+                                <button class="add-to-cart">
+                                    <span class="cart-btn-icon">+</span> 加入购物车
+                                </button>
+                            </div>
+                            <div class="book-detail">
+                                <p>作者：余华</p>
+                                <p>出版社：清湖出版社</p>
+                                <p>简介：两兄弟之间的悲惨往事</p>
+                            </div>
+                        </div>
+                        <div class="book-item">
+                            <img src="狼王梦.jpeg" alt="狼王梦">
+                            <div class="book-info">
+                                <h4>狼王梦</h4>
+                                <p class="price">¥80.90</p>
+                                <button class="add-to-cart">
+                                    <span class="cart-btn-icon">+</span> 加入购物车
+                                </button>
+                            </div>
+                            <div class="book-detail">
+                                <p>作者：沈石溪</p>
+                                <p>出版社：少儿读物出版社</p>
+                                <p>简介：小狼成长为狼王的故事</p>
+                            </div>
+                        </div>
+                           
+                            
                     </div>
                 </div>
                 <div class="new-books">
@@ -699,9 +191,9 @@
                             </tr>
                             <tr>
                                 <td>Python数据分析实战</td>
-                                <td>赵琳</td>
+                                <td>赵丽</td>
                                 <td>机械工业出版社</td>
-                                <td>¥68.00</td>
+                                <td>¥88.00</td>
                             </tr>
                         </tbody>
                     </table>
@@ -710,51 +202,42 @@
 
             <div class="right-sidebar">
                 <div class="cart-module">
-                    <h3 class="section-title">我的购物车</h3>
-                    <div class="cart-items">
-                        <div class="cart-empty">
-                            <div class="cart-icon-large">
-                                <div class="cart-icon-body"></div>
-                                <div class="cart-icon-handle"></div>
-                            </div>
-                            <p>购物车还是空的哦~</p>
-                            <p>快去添加心仪的图书吧！</p>
+                    <h3 class="section-title">购物车</h3>
+                    <div class="cart-empty">
+                        <div class="cart-icon-large">
+                            <div class="cart-icon-body"></div>
+                            <div class="cart-icon-handle"></div>
                         </div>
-                        <ul class="cart-list"></ul>
+                        <p>购物车还是空的</p>
                     </div>
+                    <ul class="cart-list">
+                    </ul>
                     <div class="cart-summary">
-                        <p>总计：<span class="total-price">¥0.00</span></p>
-                        <button class="checkout-btn">结算</button>
+                        <p>总计: <span class="total-price">¥0.00</span></p>
+                        <button class="checkout-btn">去结算</button>
                     </div>
                 </div>
-
                 <div class="promotion">
-                    <h3 class="section-title">促销信息</h3>
+                    <h3 class="section-title">促销活动</h3>
                     <div class="promotion-item">
-                        <h4>全场满减活动</h4>
-                        <p>满100元减20元，满200元减50元，多买多减！</p>
+                        <h4>全场满减</h4>
+                        <p>满200元减30元，满500元减80元</p>
                     </div>
                     <div class="promotion-item">
                         <h4>新用户专享</h4>
-                        <p>新用户注册即送50元优惠券，首单立减！</p>
+                        <p>新用户首单立减15元，无门槛使用</p>
                     </div>
                     <div class="promotion-item">
-                        <h4>会员专享折扣</h4>
-                        <p>VIP会员享受全场9折优惠，还有专属礼品！</p>
-                    </div>
-                    <div class="promotion-item">
-                        <h4>限时特价</h4>
-                        <p>精选图书限时特价，低至5折，抢完即止！</p>
+                        <h4>会员专享</h4>
+                        <p>会员购买指定图书享8折优惠</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <button id="back-to-top" class="back-to-top">↑</button>
+<button id="back-to-top" class="back-to-top">↑</button>
 
     <script>
-        // 回到顶部功能
         const backToTopBtn = document.getElementById('back-to-top');
         window.addEventListener('scroll', () => {
             backToTopBtn.classList.toggle('show', window.scrollY > 300);
@@ -762,33 +245,7 @@
         backToTopBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
-        // 购物车功能
-        const addToCartBtns = document.querySelectorAll('.add-to-cart');
-        const cartCountEl = document.querySelector('.cart-count');
-        const cartEmpty = document.querySelector('.cart-empty');
-        const cartList = document.querySelector('.cart-list');
-        const totalPriceEl = document.querySelector('.total-price');
-        let cartItems = [];
-        let totalPrice = 0;
-        // 加入购物车
-        addToCartBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const bookItem = btn.closest('.book-item');
-                const bookTitle = bookItem.querySelector('h4').textContent;
-                const bookPrice = parseFloat(bookItem.querySelector('.price').textContent.slice(1)); 
-                cartItems.push({ title: bookTitle, price: bookPrice });
-                updateCart();
-                // 按钮反馈
-                btn.style.backgroundColor = '#27ae60';
-                btn.innerHTML = '<span class="cart-btn-icon">✓</span> 已加入';
-                setTimeout(() => {
-                    btn.style.backgroundColor = '';
-                    btn.innerHTML = '<span class="cart-btn-icon">+</span> 加入购物车';
-                }, 1500);
-            });
-        });
-      
-    </script>
+        </script>>
+
 </body>
 </html>
