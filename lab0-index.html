@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>园林研究中心</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font￾awesome.min.css" rel="stylesheet">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#9CC3D5',
+secondary: '#FADADD',
+accent: '#6A9AB0',
+light: '#F9F7F3',
+dark: '#3A405A'
+},
+fontFamily: {
+sans: ['Inter', 'system-ui', 'sans-serif'],
+},
+}
+}
+}
+</script>
+<style type="text/tailwindcss">
+@layer utilities {
+.bg-watercolor {
+background: linear-gradient(135deg, #FADADD 0%, #E0F4FF 100%);
+}
+.card-shadow {
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+.text-shadow {
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+}
+</style>
+</head>
+<body class="bg-light min-h-screen">
+<!-- 顶部横幅 -->
+<header class="bg-watercolor py-12 px-4 text-center">
+<div class="container mx-auto">
+<h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-dark text-shadow">园林研究
+中心</h1>
+<p class="text-accent mt-2 text-lg">2026/01/14 | 25园林2班</p>
+</div>
+</header>
+<!-- 导航栏 -->
+<nav class="bg-white sticky top-0 z-50 shadow-sm">
+<div class="container mx-auto px-4">
+<div class="flex items-center justify-between py-4">
+<a href="#" class="text-primary font-bold text-xl">园林研究中心</a>
+<div class="hidden md:flex space-x-8">
+<a href="#team" class="text-dark hover:text-primary transition-colors">人才团队
+</a>
+<a href="#about" class="text-dark hover:text-primary transition-colors">中心介绍
+</a>
+<a href="#projects" class="text-dark hover:text-primary transition-colors">研究项目
+</a>
+<a href="#functions" class="text-dark hover:text-primary transition-colors">功能分
+区</a>
+</div>
+<button class="md:hidden text-dark text-xl">
+<i class="fa fa-bars"></i>
+</button>
+</div>
+</div>
+</nav>
+<!-- 人才团队（前置） -->
+<section id="team" class="py-16 px-4">
+<div class="container mx-auto">
+<h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-semibold text-dark mb-8 text￾center">人才团队</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
+<!-- 谢世勋 -->
+<div class="bg-white rounded-xl p-4 card-shadow hover:transform hover:scale-
+105 transition-transform">
+<img src="写实训.jpg" alt="谢世勋" class="w-full h-32 object-cover rounded-lg mb-
+3">
+<h3 class="font-medium text-dark">谢世勋</h3>
+<p class="text-sm text-gray-500">2025101118</p>
+<p class="text-xs text-accent">25园林2班</p>
+</div>
+<!-- 石馨雨 -->
+<div class="bg-white rounded-xl p-4 card-shadow hover:transform hover:scale-
+105 transition-transform">
+<img src="失信于.jpg" alt="石馨雨" class="w-full h-32 object-cover rounded-lg mb-
+3">
+<h3 class="font-medium text-dark">石馨雨</h3>
+<p class="text-sm text-gray-500">2025101152</p>
+<p class="text-xs text-accent">25园林2班</p>
+</div>
+<!-- 赵博智 -->
+<div class="bg-white rounded-xl p-4 card-shadow hover:transform hover:scale-
+105 transition-transform">
+<img src ="赵伯之.jpg" alt="赵博智" class="w-full h-32 object-cover rounded-lg mb-
+3">
+<h3 class="font-medium text-dark">赵博智</h3>
+<p class="text-sm text-gray-500">2025101108</p>
+<p class="text-xs text-accent">25园林2班</p>
+</div>
+<!-- 牟芷玉 -->
+<div class="bg-white rounded-xl p-4 card-shadow hover:transform hover:scale-
+105 transition-transform">
+<img src="某至于.jpg" alt="牟芷玉" class="w-full h-32 object-cover rounded-lg mb-
+3">
+<h3 class="font-medium text-dark">牟芷玉</h3>
+<p class="text-sm text-gray-500">2025101113</p>
+<p class="text-xs text-accent">25园林2班</p>
+</div>
+<!-- 夏子涵 -->
+<div class="bg-white rounded-xl p-4 card-shadow hover:transform hover:scale-
+105 transition-transform">
+<img src="夏梓涵.jpg" alt="夏子涵" class="w-full h-32 object-cover rounded-lg mb-
+3">
+<h3 class="font-medium text-dark">夏子涵</h3>
+<p class="text-sm text-gray-500">2025101149</p>
+<p class="text-xs text-accent">25园林2班</p>
+</div>
+<!-- 郝俊榕 -->
+<div class="bg-white rounded-xl p-4 card-shadow hover:transform hover:scale-
+105 transition-transform">
+<img src="郝.jpg" alt="郝俊榕" class="w-full h-32 object-cover rounded-lg mb-
+3">
+<h3 class="font-medium text-dark">郝俊榕</h3>
+<p class="text-sm text-gray-500">2025101120</p>
+<p class="text-xs text-accent">25园林2班</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- 谢世勋档案 -->
+<div class="bg-white rounded-xl overflow-hidden card-shadow">
+<div class="bg-primary/10 px-6 py-4 border-b border-gray-100">
+<div class="flex items-center gap-4">
+<img src="写实训.jpg" alt="谢世勋" class="w-16 h-16 object-cover rounded￾full">
+<div>
+<h3 class="font-medium text-dark">谢世勋</h3>
+<p class="text-sm text-gray-500">2025101118 | 25园林2班</p>
+</div>
+</div>
+</div>
+<div class="p-6 space-y-4 text-sm">
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习理念</h4>
+<p>秉持"理论联系实际、研究服务应用"的学习理念</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习优势与不足</h4>
+<p>具备了较好的学习基础，通过实际项目，以研促学，同时将研究成果运用于实践
+学习，锻炼了分析问题和解决问题的能力；善于与他人协作和对外交流，乐于接收新思想，能够快速
+捕捉园林行业的热点和前沿动态。</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习计划</h4>
+<p>跟随课题组和导师，辅助导师研究课题与撰写文案</p>
+</div>
+</div>
+</div>
+<!-- 赵博智档案 -->
+<div class="bg-white rounded-xl overflow-hidden card-shadow">
+<div class="bg-primary/10 px-6 py-4 border-b border-gray-100">
+<div class="flex items-center gap-4">
+<img src="赵伯之.jpg" alt="赵博智" class="w-16 h-16 object-cover rounded￾full">
+<div>
+<h3 class="font-medium text-dark">赵博智</h3>
+<p class="text-sm text-gray-500">2025101108 | 25园林2班</p>
+</div>
+</div>
+</div>
+<div class="p-6 space-y-4 text-sm">
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习理念</h4>
+<p>学会，学精，学懂就行</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习优势与不足</h4>
+<p>上课听，下课不怎么看；较积极，记笔记；不复习，记的快</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习计划</h4>
+<p>布置上课要笔记</p>
+</div>
+</div>
+</div>
+<!-- 石馨雨档案 -->
+<div class="bg-white rounded-xl overflow-hidden card-shadow">
+<div class="bg-primary/10 px-6 py-4 border-b border-gray-100">
+<div class="flex items-center gap-4">
+<img src="失信于.jpg" alt="石馨雨" class="w-16 h-16 object-cover rounded￾full">
+<div>
+<h3 class="font-medium text-dark">石馨雨</h3>
+<p class="text-sm text-gray-500">2025101152 | 25园林2班</p>
+</div>
+</div>
+</div>
+<div class="p-6 space-y-4 text-sm">
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习理念</h4>
+<p>将以学习和实践结合，巩固知识，不断提升自己的专业能力和审美，重视知识的
+应用和创新迭代，积极与老师同学交流，以此获得新的灵感。</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习优势与不足</h4>
+<p>认真，有方向的去巩固和发展规划，需要加强练习，需要多学习，多出去观察，
+通过记忆加深印象</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习计划</h4>
+<p>多去实际的地方观察，多练习，专注力量感训练，找到适合自己，能坚持的节
+奏。</p>
+</div>
+</div>
+</div>
+<!-- 牟芷玉档案 -->
+<div class="bg-white rounded-xl overflow-hidden card-shadow">
+<div class="bg-primary/10 px-6 py-4 border-b border-gray-100">
+<div class="flex items-center gap-4">
+<img src="某至于.jpg" alt="牟芷玉" class="w-16 h-16 object-cover rounded￾full">
+<div>
+<h3 class="font-medium text-dark">牟芷玉</h3>
+<p class="text-sm text-gray-500">2025101113 | 25园林2班</p>
+</div>
+</div>
+</div>
+<div class="p-6 space-y-4 text-sm">
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习理念</h4>
+<p>脚踏实地学好专业知识，理论结合实践，在实践中检验所学，提升专业技能</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习优势与不足</h4>
+<p>学习态度端正，能按时完成学习任务，对园林植物相关知识兴趣浓厚；不足在于
+景观设计软件操作熟练度有待提升，创新思维需进一步培养</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习计划</h4>
+<p>加强园林CAD、SU等设计软件的学习练习，阅读优秀景观设计案例，参与校内
+园林设计实践项目，提升设计能力</p>
+</div>
+</div>
+</div>
+<!-- 夏子涵档案 -->
+<div class="bg-white rounded-xl overflow-hidden card-shadow">
+<div class="bg-primary/10 px-6 py-4 border-b border-gray-100">
+<div class="flex items-center gap-4">
+<img src="夏梓涵.jpg" alt="夏子涵" class="w-16 h-16 object-cover rounded￾full">
+<div>
+<h3 class="font-medium text-dark">夏子涵</h3>
+<p class="text-sm text-gray-500">2025101149 | 25园林2班</p>
+</div>
+</div>
+</div>
+<div class="p-6 space-y-4 text-sm">
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习理念</h4>
+<p>以自然为师，在观察和探索中学习园林知识，注重生态理念在园林设计中的融合
+应用</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习优势与不足</h4>
+<p>对园林生态相关理论理解较深，善于观察自然景观的生态结构；不足是植物配置
+实操经验较少，对不同植物的生长习性掌握不够全面</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习计划</h4>
+<p>定期到植物园、城市公园进行植物调研，记录植物生长特性与配置方式，参与植
+物种植养护实践活动，积累实操经验</p>
+</div>
+</div>
+</div>
+<!-- 郝俊榕档案 -->
+<div class="bg-white rounded-xl overflow-hidden card-shadow">
+<div class="bg-primary/10 px-6 py-4 border-b border-gray-100">
+<div class="flex items-center gap-4">
+<img src="郝.jpg" alt="郝俊榕" class="w-16 h-16 object-cover rounded￾full">
+<div>
+<h3 class="font-medium text-dark">郝俊榕</h3>
+<p class="text-sm text-gray-500">2025101120 | 25园林2班</p>
+</div>
+</div>
+</div>
+<div class="p-6 space-y-4 text-sm">
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习理念</h4>
+<p>博采众长，借鉴国内外优秀园林案例，结合本土文化特色，打造兼具美观与实用
+的园林作品</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习优势与不足</h4>
+<p>审美能力较好，对园林景观的空间布局有自己的见解；不足是园林工程施工相关
+知识薄弱，对施工工艺和流程了解较少</p>
+</div>
+<div class="p-3 bg-gray-50 rounded-lg">
+<h4 class="font-medium text-accent mb-2">学习计划</h4>
+<p>学习园林工程相关课程，到施工现场观摩学习，了解园林小品、硬质铺装等施工
+流程，提升工程实践认知</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 中心介绍 -->
+<section id="about" class="py-16 px-4">
+<div class="container mx-auto">
+<div class="max-w-3xl mx-auto text-center mb-12">
+<h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-semibold text-dark mb-4">中心介绍
+</h2>
+<p class="text-gray-600 text-lg">
+园林研究中心成立于2025年，依托25园林2班的专业力量，致力于风景园林领域的理论研
+究与实践创新。
+我们以"生态优先、文化传承、创新驱动"为核心理念，聚焦园林生态修复、景观规划设
+计、植物应用技术等方向，
+打造产、学、研一体化的专业平台，为城市生态建设与乡村振兴提供专业支撑。
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-white rounded-xl p-6 card-shadow">
+<div class="text-primary text-4xl mb-4"><i class="fa fa-flag"></i></div>
+<h3 class="font-medium text-dark text-xl mb-2">中心使命</h3>
+<p class="text-gray-500">推动园林学科发展，培养专业人才，解决行业关键问题，助力
+生态文明建设。</p>
+</div>
+<div class="bg-white rounded-xl p-6 card-shadow">
+<div class="text-primary text-4xl mb-4"><i class="fa fa-eye"></i></div>
+<h3 class="font-medium text-dark text-xl mb-2">发展愿景</h3>
+<p class="text-gray-500">成为国内领先、国际知名的园林研究与实践机构，引领行业创
+新发展。</p>
+</div>
+<div class="bg-white rounded-xl p-6 card-shadow">
+<div class="text-primary text-4xl mb-4"><i class="fa fa-university"></i></div>
+<h3 class="font-medium text-dark text-xl mb-2">核心价值</h3>
+<p class="text-gray-500">追求卓越、开放协作、知行合一、服务社会。</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 研究项目 -->
+<section id="projects" class="py-16 px-4 bg-gray-50">
+<div class="container mx-auto">
+<h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-semibold text-dark mb-8 text￾center">研究项目</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white rounded-xl overflow-hidden card￾shadow hover:transform hover:scale-105 transition-transform">
+<img src="https://picsum.photos/id/106/600/400" alt="城市公园生态修复研
+究" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="font-medium text-dark text-xl mb-2">城市公园生态修复研究</h3>
+<p class="text-gray-500 text-sm mb-4">针对城市公园生态系统退化问题，探索低
+成本、高成效的生态修复技术与景观营造方法。</p>
+<div class="flex items-center text-sm text-accent">
+<i class="fa fa-user mr-2"></i>
+<span>负责人：谢世勋</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl overflow-hidden card￾shadow hover:transform hover:scale-105 transition-transform">
+<img src="https://picsum.photos/id/103/600/400" alt="乡村景观振兴策略研
+究" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="font-medium text-dark text-xl mb-2">乡村景观振兴策略研究</h3>
+<p class="text-gray-500 text-sm mb-4">结合乡村振兴战略，研究传统村落景观保
+护与活化路径，构建可持续的乡村景观模式。</p>
+<div class="flex items-center text-sm text-accent">
+<i class="fa fa-user mr-2"></i>
+<span>负责人：石馨雨</span>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-xl overflow-hidden card￾shadow hover:transform hover:scale-105 transition-transform">
+<img src="https://picsum.photos/id/152/600/400" alt="乡土植物应用推广研
+究" class="w-full h-48 object-cover">
+<div class="p-6">
+<h3 class="font-medium text-dark text-xl mb-2">乡土植物应用推广研究</h3>
+<p class="text-gray-500 text-sm mb-4">筛选适合本地生境的乡土植物，研究其在
+城市绿化中的应用技术与景观效果，提升生物多样性。</p>
+<div class="flex items-center text-sm text-accent">
+<i class="fa fa-user mr-2"></i>
+<span>负责人：赵博智</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 功能分区 -->
+<section id="functions" class="py-16 px-4 bg-gray-50">
+<div class="container mx-auto">
+<h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-semibold text-dark mb-8 text￾center">功能分区</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-white rounded-xl p-6 card-shadow hover:bg-primary/5 transition￾colors">
+<div class="text-primary text-3xl mb-4"><i class="fa fa-info-circle"></i></div>
+<h3 class="font-medium text-dark text-lg mb-2">01 中心基本概况</h3>
+<p class="text-gray-500 text-sm">介绍园林研究中心的成立背景、发展历程、核心使
+命与愿景。</p>
+</div>
+<div class="bg-white rounded-xl p-6 card-shadow hover:bg-primary/5 transition￾colors">
+<div class="text-primary text-3xl mb-4"><i class="fa fa-leaf"></i></div>
+<h3 class="font-medium text-dark text-lg mb-2">02 园林研究方向</h3>
+<p class="text-gray-500 text-sm">涵盖风景园林规划设计、生态修复、植物应用等核
+心研究领域。</p>
+</div>
+<div class="bg-white rounded-xl p-6 card-shadow hover:bg-primary/5 transition￾colors">
+<div class="text-primary text-3xl mb-4"><i class="fa fa-flask"></i></div>
+<h3 class="font-medium text-dark text-lg mb-2">03 中心科研成果</h3>
+<p class="text-gray-500 text-sm">展示近年来的科研项目、学术论文、专利与获奖情
+况。</p>
+</div>
+<div class="bg-white rounded-xl p-6 card-shadow hover:bg-primary/5 transition￾colors">
+<div class="text-primary text-3xl mb-4"><i class="fa fa-users"></i></div>
+<h3 class="font-medium text-dark text-lg mb-2">04 中心人才团队</h3>
+<p class="text-gray-500 text-sm">介绍中心的师资力量、研究人员构成及人才培养体
+系。</p>
+</div>
+<div class="bg-white rounded-xl p-6 card-shadow hover:bg-primary/5 transitioncolors">
+<div class="text-primary text-3xl mb-4"><i class="fa fa-exchange"></i></div>
+<h3 class="font-medium text-dark text-lg mb-2">05 中心合作交流</h3>
+<p class="text-gray-500 text-sm">说明与国内外高校、科研机构及企业的合作与学术
+交流。</p>
+</div>
+<div class="bg-white rounded-xl p-6 card-shadow hover:bg-primary/5 transitioncolors">
+<div class="text-primary text-3xl mb-4"><i class="fa fa-line-chart"></i></div>
+<h3 class="font-medium text-dark text-lg mb-2">06 中心未来展望</h3>
+<p class="text-gray-500 text-sm">阐述中心未来的发展规划、重点方向与战略目标。
+    </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 页脚 -->
+<footer class="bg-dark text-white py-8 px-4">
+<div class="container mx-auto text-center">
+<p class="mb-2">© 2026 园林研究中心 | 25园林2班</p>
+<p class="text-sm text-gray-400">设计与开发：研究中心技术组</p>
+</div>
+</footer>
+</body>
+</html>
