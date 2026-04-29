@@ -2,10 +2,11 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>数字展销平台 - 实验三</title>
-    <link rel="stylesheet" href="../css/lab3-2503-116-index.css">
+    <title>数字展销平台 - 实验四</title>
+    <link rel="stylesheet" href="../css/lab4-2503-116-index.css">
 </head>
 <body>
+    <!-- 登录/注册弹窗 -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="login-modal" id="loginModal">
             <div class="login-box" id="loginBox">
@@ -61,10 +62,20 @@
                     <li><a href="#">新书上市</a></li>
                     <li><a href="#">促销活动</a></li>
                     <li><a href="#">关于我们</a></li>
-                    <li><a href="javascript:;" onclick="openModal()" id="loginNav"class="login-btn">登录/注册</a></li>
+                    <li><a href="javascript:;" onclick="openModal()" id="loginNav" class="login-btn">登录/注册</a></li>
                 </ul>
             </nav>
         </header>
+
+        <!-- 轮播图区域（从下向上切换） -->
+        <div class="carousel">
+            <div class="carousel-inner">
+                <img src="../img/轮播图1.jpg" alt="轮播图1" >
+                <img src="../img/轮播图2.jpg" alt="轮播图2" >
+                <img src="../img/轮播图3.jpg" alt="轮播图3">
+            </div>
+        </div>
+
         <div class="main-content">
             <div class="left-sidebar">
                 <h3>图书分类</h3>
@@ -184,67 +195,73 @@
             <p>学号：20252200116</p>
         </footer>
     </div>
+
+    <!-- 悬浮右下角：搜索、购物车图标 -->
+    <div class="fixed-icons">
+        <div class="icon search-icon">🔍</div>
+        <div class="icon cart-icon">🛒</div>
+    </div>
+
 <script>
-        function openModal() {
-            document.getElementById('modalOverlay').style.display = 'block';
-            showLogin(); // 默认打开登录框
-        }从
-        function closeModal() {
-            document.getElementById('modalOverlay').style.display = 'none';
-        }
-        function showLogin() {
-            document.getElementById('loginBox').style.display = 'block';
-            document.getElementById('registerBox').style.display = 'none';
-        }
-        function showRegister() {
-            document.getElementById('loginBox').style.display = 'none';
-            document.getElementById('registerBox').style.display = 'block';
-        }
-        function doRegister() {
-            let username = document.getElementById('regUsername').value.trim();
-            let pwd = document.getElementById('regPassword').value;
-            let confirmPwd = document.getElementById('regConfirmPwd').value;
+    function openModal() {
+        document.getElementById('modalOverlay').style.display = 'block';
+        showLogin();
+    }
+    function closeModal() {
+        document.getElementById('modalOverlay').style.display = 'none';
+    }
+    function showLogin() {
+        document.getElementById('loginBox').style.display = 'block';
+        document.getElementById('registerBox').style.display = 'none';
+    }
+    function showRegister() {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('registerBox').style.display = 'block';
+    }
+    function doRegister() {
+        let username = document.getElementById('regUsername').value.trim();
+        let pwd = document.getElementById('regPassword').value;
+        let confirmPwd = document.getElementById('regConfirmPwd').value;
 
-            if (!username || !pwd || !confirmPwd) {
-                alert('请填写完整信息！');
-                return;
-            }
-            if (pwd !== confirmPwd) {
-                alert('两次密码不一致！');
-                return;
-            }
-            let users = JSON.parse(localStorage.getItem('users') || '[]');
-            let exist = users.find(u => u.username === username);
-            if (exist) {
-                alert('用户名已存在！');
-                return;
-            }
-            users.push({ username, password: pwd });
-            localStorage.setItem('users', JSON.stringify(users));
-            alert('注册成功，请登录！');
-            showLogin(); // 切换到登录框
+        if (!username || !pwd || !confirmPwd) {
+            alert('请填写完整信息！');
+            return;
         }
-        function doLogin() {
-            let username = document.getElementById('loginUsername').value.trim();
-            let pwd = document.getElementById('loginPassword').value;
-
-            if (!username || !pwd) {
-                alert('请输入用户名和密码！');
-                return;
-            }
-
-            let users = JSON.parse(localStorage.getItem('users') || '[]');
-            let user = users.find(u => u.username === username && u.password === pwd);
-
-            if (user) {
-                alert('登录成功！欢迎你，' + username);
-                closeModal();
-                document.getElementById('loginNav').innerText = '欢迎，' + username;
-            } else {
-                alert('用户名或密码错误！');
-            }
+        if (pwd !== confirmPwd) {
+            alert('两次密码不一致！');
+            return;
         }
-    </script>
-    
+        let users = JSON.parse(localStorage.getItem('users') || '[]');
+        let exist = users.find(u => u.username === username);
+        if (exist) {
+            alert('用户名已存在！');
+            return;
+        }
+        users.push({ username, password: pwd });
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('注册成功，请登录！');
+        showLogin();
+    }
+    function doLogin() {
+        let username = document.getElementById('loginUsername').value.trim();
+        let pwd = document.getElementById('loginPassword').value;
+
+        if (!username || !pwd) {
+            alert('请输入用户名和密码！');
+            return;
+        }
+
+        let users = JSON.parse(localStorage.getItem('users') || '[]');
+        let user = users.find(u => u.username === username && u.password === pwd);
+
+        if (user) {
+            alert('登录成功！欢迎你，' + username);
+            closeModal();
+            document.getElementById('loginNav').innerText = '欢迎，' + username;
+        } else {
+            alert('用户名或密码错误！');
+        }
+    }
+</script>
 </body>
 </html>
